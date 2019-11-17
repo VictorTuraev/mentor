@@ -1,18 +1,18 @@
 import numpy as np
 import time
 
-r = np.array([[200., 200.]])
-v = np.array([[0.5, 0.]])
-c = np.array([1.])
-m = 10.
-b = 0.05
-dt = 0.01
+r = np.array([[200., 200.],[200., 100.]])
+v = np.array([[0.5, 0.], [-0.5, 0.]])
+c = np.array([1., -1])
+m = 1.
+b = 1
+dt = 0.05
 
 
 
 
 
-# In[49]:
+
 
 
 class Vortices():
@@ -26,7 +26,7 @@ class Vortices():
         self.n = np.shape(self.r)[0]
     def acceleration(self):
         n = self.n
-        acc = np.empty_like(r)
+        acc = np.zeros_like(r)
         for i in range(n):        
             for j in range(n):
                 if (j != i) and (np.linalg.norm(self.r[i]-self.r[j]) != 0.):
@@ -42,13 +42,12 @@ class Vortices():
         
 
 
-# In[50]:
 
 
 vort = Vortices(r, v, c, m, b, dt)
 
 
-# In[55]:
+
 
 
 import tkinter as tk
@@ -67,7 +66,7 @@ for i in range(vort.n):
                 fill='green')
 
 
-# In[54]:
+
 
 for i in range(100000):
     canv.delete(tk.ALL)
