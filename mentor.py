@@ -33,6 +33,7 @@ class Vortices():
                     acc[i] += self.c[i] * self.c[j] * (self.r[j]-self.r[i])  / (- self.m) / ( np.linalg.norm(self.r[i]-self.r[j])**2)
             acc[i,0] += self.v[i, 1]*self.b*self.c[i]/(-self.m)
             acc[i,1] -= self.v[i, 0]*self.b*self.c[i]/(-self.m)
+            #Fx+=(c1 * c2 * (r1-r2)  /( np.linalg.norm(r1-r2)**2))*cos(a)#Fx=c[i]*c[j]*(x[i]-x[j])/((x[i]-x[j])**2+(y[i]-y[j])**2)
         return acc
     def move(self):
         acc = self.acceleration()
