@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 
 gamma = 0.1
 omega = 1.
-dt = 0.02
+dt = 0.002
 y = np.array([1., 2., 3., 4., 0., 0., 0., 0.])
 
 b=1
 c = np.array([1., -1])
-m=1
+m=0.1
 
 
 def f(t, y):
@@ -40,9 +40,11 @@ def runge_kutta(y, t, dt, func):
 ans = []
 for i in range(1000):
 	y = runge_kutta(y, 1, dt, velocity)
-	ans.append(y)
+	ans.append(y[:4])
 
 
-ans =np.transpose(np.array(ans))
-plt.plot(ans[0])
+
+ans = np.transpose(np.array(ans))
+plt.plot(ans[0], ans[1], 'r')
+plt.plot(ans[2], ans[3], 'b')
 plt.show()
