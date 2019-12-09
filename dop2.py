@@ -1,8 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 y = np.array([1., 2., 3., 4., 2., 1.])
+
+
 n = len(y)//2
 dt=0.001
+b=1
+m=0.1
+
+c = np.array([1., -1, 1.])
+
+
 def velocity(t, y):
 	ans = np.zeros_like(y)
 	for i in range(n):
